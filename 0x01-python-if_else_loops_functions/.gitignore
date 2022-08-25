@@ -1,3 +1,4 @@
 main.py
 *.pyc
 main.c
+linked_lists.c
