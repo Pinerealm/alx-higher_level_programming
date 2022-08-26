@@ -13,7 +13,7 @@ def exec_calc(operator, a, b):
     elif operator == '/':
         return div(a, b)
     else:
-        print("Unknown operator. Available operators: +, -, *, and /")
+        print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
 
 
