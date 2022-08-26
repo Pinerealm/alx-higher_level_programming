@@ -14,13 +14,13 @@ def exec_calc(operator, a, b):
         return div(a, b)
     else:
         print("Unknown operator. Available operators: +, -, *, and /")
-        exit(1)
+        sys.exit(1)
 
 
 def main():
     if len(sys.argv) != 4:
         print("Usage: {} <a> <operator> <b>".format(sys.argv[0]))
-        exit(1)
+        sys.exit(1)
 
     a = int(sys.argv[1])
     operator = sys.argv[2]
