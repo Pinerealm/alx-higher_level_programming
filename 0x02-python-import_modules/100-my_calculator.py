@@ -19,7 +19,7 @@ def exec_calc(operator, a, b):
 
 def main():
     if len(sys.argv) != 4:
-        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        print("Usage: {} <a> <operator> <b>".format(sys.argv[0]))
         exit(1)
 
     a = int(sys.argv[1])
