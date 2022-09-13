@@ -2,5 +2,5 @@
 
 
 class Square:
-    """ The Square class"""
+    """This defines an empty Square class"""
     pass
