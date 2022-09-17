@@ -1,4 +1,4 @@
-This tests the ``matrix_divided`` function of the ``2-matrix_divided`` add_integer_module.
+This tests the ``matrix_divided`` function of the ``2-matrix_divided`` module.
 
 Normal cases
 ------------
