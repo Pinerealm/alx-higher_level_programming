@@ -50,60 +50,66 @@ class Square:
 
     def __eq__(self, other):
         """Equal comparison operator.
-        
+
         Args:
             other (Square): Square to compare.
-            
+
         Returns:
-            True if the area of both squares are equal, otherwise False."""
+            True if the area of both squares are equal,
+            otherwise False."""
         return self.area() == other.area()
 
     def __ne__(self, other):
         """Not equal comparison operator.
-        
+
         Args:
             other (Square): Square to compare.
-            
+
         Returns:
-            True if the area of both squares are not equal, otherwise False."""
+            True if the area of both squares are not equal,
+            otherwise False."""
         return self.area() != other.area()
 
     def __gt__(self, other):
         """Greater than comparison operator.
-        
+
         Args:
             other (Square): Square to compare.
-            
+
         Returns:
-            True if the area of the first square is greater than the area of the second square, otherwise False."""
+            True if the area of the first square is greater
+            than the area of the second square, otherwise False."""
         return self.area() > other.area()
 
     def __ge__(self, other):
         """Greater than or equal comparison operator.
-        
+
         Args:
             other (Square): Square to compare.
-            
+
         Returns:
-            True if the area of the first square is greater than or equal to the area of the second square, otherwise False."""
+            True if the area of the first square is greater than
+            or equal to the area of the second square, otherwise False."""
         return self.area() >= other.area()
 
     def __lt__(self, other):
         """Less than comparison operator.
-        
+
         Args:
             other (Square): Square to compare.
-            
+
         Returns:
-            True if the area of the first square is less than the area of the second square, otherwise False."""
+            True if the area of the first square is less than
+            the area of the second square, otherwise False."""
         return self.area() < other.area()
 
     def __le__(self, other):
         """Less than or equal comparison operator.
-        
+
         Args:
             other (Square): Square to compare.
-            
+
         Returns:
-            True if the area of the first square is less than or equal to the area of the second square, otherwise False."""
+            True if the area of the first square is less than
+            or equal to the area of the second square, otherwise False."""
         return self.area() <= other.area()
