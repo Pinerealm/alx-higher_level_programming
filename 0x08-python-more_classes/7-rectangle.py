@@ -19,8 +19,17 @@ class Rectangle:
             width (int): The width of the rectangle.
             height (int): The height of the rectangle.
         """
+        if not isinstance(width, int):
+            raise TypeError("width must be an integer")
+        if width < 0:
+            raise ValueError("width must be >= 0")
+        if not isinstance(height, int):
+            raise TypeError("height must be an integer")
+        if height < 0:
+            raise ValueError("height must be >= 0")
         self.__width = width
         self.__height = height
+        self.print_symbol = Rectangle.print_symbol
         Rectangle.number_of_instances += 1
 
     @property
@@ -97,7 +106,8 @@ class Rectangle:
         """Returns a string representation of the rectangle."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "\n".join(["#" * self.__width] * self.__height)
+        return "\n".join([str(self.print_symbol) * self.__width]
+                         * self.__height)
 
     def __repr__(self):
         """Returns a string representation of the rectangle."""
