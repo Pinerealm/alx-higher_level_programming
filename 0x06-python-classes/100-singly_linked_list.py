@@ -13,6 +13,10 @@ class Node:
             data (int): Data of the node.
             next_node (Node): Next node of the singly linked list.
         """
+        if not isinstance(data, int):
+            raise TypeError("data must be an integer")
+        if not isinstance(next_node, (Node, type(None))):
+            raise TypeError("next_node must be a Node object")
         self.__data = data
         self.__next_node = next_node
 
