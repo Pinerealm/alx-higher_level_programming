@@ -12,6 +12,17 @@ class Square:
         Args:
             size (int): Size of the square.
         """
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        if size < 0:
+            raise ValueError("size must be >= 0")
+        if not isinstance(position, tuple) or len(position) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if not isinstance(position[0], int) or position[0] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if not isinstance(position[1], int) or position[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+
         self.__size = size
         self.__position = position
 
@@ -83,8 +94,14 @@ class Square:
     def __str__(self):
         """Return a string representation of the square."""
         if self.__size == 0:
-            return "\n"
+            return ""
         else:
-            return "\n" * self.__position[1] + \
-                ("\n" + " " * self.__position[0] + "#" * self.__size) * \
-                self.__size
+            r_str = ""
+            x_pos = self.__position[0]
+            for i in range(self.__position[1]):
+                r_str += "\n"
+            for i in range(self.__size):
+                r_str += " " * x_pos + "#" * self.__size
+                if i < self.__size - 1:
+                    r_str += "\n"
+            return r_str
