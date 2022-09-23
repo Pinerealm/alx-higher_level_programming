@@ -2,9 +2,6 @@
 """This module contains a function that adds two integers"""
 
 
-from unittest import result
-
-
 def add_integer(a, b=98):
     """Add two integers
 
