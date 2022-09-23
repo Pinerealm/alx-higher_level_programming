@@ -15,7 +15,7 @@ Normal usage
 >>> add_integer(2.0, 3.0)
 5
 
-Should raise a TypeError exception
+Raise a TypeError exception
 ----------------------------------
 >>> add_integer('2', 3)
 Traceback (most recent call last):
@@ -26,3 +26,11 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 ................
 TypeError: b must be an integer
+
+
+Raise an OverflowError exception
+----------------------------------
+>>> add_integer(2e110000, 0.1)
+Traceback (most recent call last):
+...............
+OverflowError: result is too large

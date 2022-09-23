@@ -2,6 +2,9 @@
 """This module contains a function that adds two integers"""
 
 
+from unittest import result
+
+
 def add_integer(a, b=98):
     """Add two integers
 
@@ -19,4 +22,9 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if isinstance(b, (int, float)) is False:
         raise TypeError("b must be an integer")
+
+    result = a + b
+    if result == float('inf') or result == float('-inf'):
+        raise OverflowError("result is too large")
+
     return int(a) + int(b)
