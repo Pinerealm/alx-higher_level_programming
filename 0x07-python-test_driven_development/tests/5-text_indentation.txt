@@ -21,7 +21,7 @@ How are you?
 <BLANKLINE>
 Great!
 
->>> text_indentation("Holberton. School? How are you: John")
+>>> text_indentation("Holberton. School? How are you:    John")
 Holberton.
 <BLANKLINE>
 School?

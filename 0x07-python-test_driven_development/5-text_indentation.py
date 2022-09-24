@@ -17,9 +17,14 @@ def text_indentation(text=""):
         raise TypeError("no text input")
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    for i in range(len(text)):
-        if text[i] == ' ' and text[i - 1] in '.?:':
-            continue
-        print(text[i], end="")
+
+    i = 0
+    while i < len(text):
         if text[i] in ".?:":
-            print("\n")
+            print(text[i] + "\n")
+            while i < len(text) - 1 and text[i + 1] in " \t":
+                i += 1
+            i += 1
+        else:
+            print(text[i], end="")
+            i += 1
