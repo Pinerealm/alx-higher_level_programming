@@ -78,7 +78,7 @@ Traceback (most recent call last):
 ..........
 ZeroDivisionError: division by zero
 
->>> matrix_divided(matrix, -0.0)
+>>> matrix_divided(matrix, 1e-1000)
 Traceback (most recent call last):
 ..........
 ZeroDivisionError: division by zero
