@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/python3
 """This module has a function that prints a square with the character #."""
 
 
