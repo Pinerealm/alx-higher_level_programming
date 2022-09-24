@@ -2,7 +2,7 @@
 """This module contains the text_indentation function"""
 
 
-def text_indentation(text):
+def text_indentation(text=""):
     """Prints a text with 2 new lines after certain characters
 
     These characters are: '.', '?' and ':'
@@ -13,6 +13,8 @@ def text_indentation(text):
     Raises:
         TypeError: If text is not a string
     """
+    if not text:
+        raise TypeError("no text input")
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     for i in range(len(text)):

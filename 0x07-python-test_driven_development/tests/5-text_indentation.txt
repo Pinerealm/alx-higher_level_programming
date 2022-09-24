@@ -21,6 +21,15 @@ How are you?
 <BLANKLINE>
 Great!
 
+>>> text_indentation("Holberton. School? How are you: John")
+Holberton.
+<BLANKLINE>
+School?
+<BLANKLINE>
+How are you:
+<BLANKLINE>
+John
+
 
 Raises a TypeError
 ------------------
@@ -31,3 +40,9 @@ Raises a TypeError
 Traceback (most recent call last):
 ..........
 TypeError: text must be a string
+
+* If no argument is passed:
+>>> text_indentation()
+Traceback (most recent call last):
+..........
+TypeError: no text input
