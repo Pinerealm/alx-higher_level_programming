@@ -6,15 +6,12 @@ Normal cases
 >>> say_my_name = __import__('3-say_my_name').say_my_name
 >>> say_my_name("John", "Smith")
 My name is John Smith
-
->>> say_my_name("Bob", "")
-My name is Bob
-
+ 
 >>> say_my_name("", "Dylan")
-My name is Dylan
+My name is  Dylan
 
 >>> say_my_name("Bob")
-My name is Bob
+My name is Bob 
 
 
 Raise a TypeError
