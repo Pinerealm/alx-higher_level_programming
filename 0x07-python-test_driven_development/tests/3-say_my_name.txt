@@ -8,16 +8,13 @@ Normal cases
 My name is John Smith
 
 >>> say_my_name("Bob", "")
-My name is Bob 
+My name is Bob
 
 >>> say_my_name("", "Dylan")
-My name is  Dylan
-
->>> say_my_name("", "")
-My name is  
+My name is Dylan
 
 >>> say_my_name("Bob")
-My name is Bob 
+My name is Bob
 
 
 Raise a TypeError
@@ -44,3 +41,9 @@ TypeError: first_name must be a string
 Traceback (most recent call last):
 ..........
 TypeError: last_name must be a string
+
+* If ``first_name`` and ``last_name`` are empty strings:
+>>> say_my_name("", "")
+Traceback (most recent call last):
+..........
+TypeError: no name given
