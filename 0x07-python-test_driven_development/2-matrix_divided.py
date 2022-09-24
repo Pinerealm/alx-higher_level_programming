@@ -20,10 +20,10 @@ def matrix_divided(matrix, div):
     """
     if div == float('inf') or div == -float('inf') or div != div:
         raise OverflowError("div is too large or too small")
-    if isinstance(matrix, list) is False:
+    if isinstance(matrix, list) is False or len(matrix) == 0:
         raise TypeError("matrix must be a matrix (list of lists)"
                         " of integers/floats")
-    if isinstance(matrix[0], list) is False:
+    if isinstance(matrix[0], list) is False or len(matrix[0]) == 0:
         raise TypeError("matrix must be a matrix (list of lists)"
                         " of integers/floats")
     if isinstance(div, (int, float)) is False:
