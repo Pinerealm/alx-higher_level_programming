@@ -2,7 +2,7 @@
 """This module has a function that prints a square with the character #."""
 
 
-def print_square(size):
+def print_square(size=None):
     """Prints a square with the character #.
 
     Args:
@@ -12,6 +12,8 @@ def print_square(size):
         TypeError: If size is not an integer.
         ValueError: If size is less than 0.
     """
+    if size is None:
+        raise TypeError("size not defined")
     if not isinstance(size, int):
         raise TypeError("size must be an integer")
     if size < 0:

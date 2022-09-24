@@ -42,3 +42,9 @@ ValueError: size must be >= 0
 Traceback (most recent call last):
 ..........
 TypeError: size must be an integer
+
+* If size is not given
+>>> print_square()
+Traceback (most recent call last):
+..........
+TypeError: size not defined
