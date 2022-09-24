@@ -18,8 +18,8 @@ def matrix_divided(matrix, div):
         TypeError: if div is not an integer or float
         ZeroDivisionError: if div is 0
     """
-    if div == float('inf') or div == -float('inf') or div != div:
-        raise OverflowError("div is too large or too small")
+    if div == float('inf'):
+        raise OverflowError("divisor is too large")
     if isinstance(matrix, list) is False or len(matrix) == 0:
         raise TypeError("matrix must be a matrix (list of lists)"
                         " of integers/floats")
@@ -28,7 +28,7 @@ def matrix_divided(matrix, div):
                         " of integers/floats")
     if isinstance(div, (int, float)) is False:
         raise TypeError("div must be a number")
-    if div == 0:
+    if div <= 0:
         raise ZeroDivisionError("division by zero")
 
     new_matrix = []

@@ -51,6 +51,18 @@ Traceback (most recent call last):
 ..........
 TypeError: Each row of the matrix must have the same size
 
+* If the matrix is empty
+>>> matrix_divided([], 1)
+Traceback (most recent call last):
+..........
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+* If the first row of the matrix is empty
+>>> matrix_divided([[], [1, 2]], 1)
+Traceback (most recent call last):
+..........
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
 
 Raise a ZeroDivisionError
 -------------------------
@@ -65,3 +77,18 @@ ZeroDivisionError: division by zero
 Traceback (most recent call last):
 ..........
 ZeroDivisionError: division by zero
+
+>>> matrix_divided(matrix, -0.0)
+Traceback (most recent call last):
+..........
+ZeroDivisionError: division by zero
+
+
+Raise an OverflowError
+----------------------
+
+* If the divisor is too large
+>>> matrix_divided(matrix, 1e1000)
+Traceback (most recent call last):
+..........
+OverflowError: divisor is too large
