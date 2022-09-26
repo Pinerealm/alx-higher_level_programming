@@ -19,17 +19,8 @@ class Rectangle:
             width (int): The width of the rectangle.
             height (int): The height of the rectangle.
         """
-        if not isinstance(width, int):
-            raise TypeError("width must be an integer")
-        if width < 0:
-            raise ValueError("width must be >= 0")
-        if not isinstance(height, int):
-            raise TypeError("height must be an integer")
-        if height < 0:
-            raise ValueError("height must be >= 0")
-        self.__width = width
-        self.__height = height
-        self.print_symbol = Rectangle.print_symbol
+        self.width = width
+        self.height = height
         Rectangle.number_of_instances += 1
 
     @property
