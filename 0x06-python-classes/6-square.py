@@ -7,23 +7,14 @@ class Square:
     """This is the Square class definition."""
 
     def __init__(self, size=0, position=(0, 0)):
-        """__init__ method to initialize the size attribute.
+        """method to run on instantiation.
 
         Args:
             size (int): Size of the square.
+            position (tuple): Position of the square.
         """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        if not isinstance(position, tuple) or len(position) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if not isinstance(position[0], int) or position[0] < 0:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if not isinstance(position[1], int) or position[1] < 0:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     def area(self):
         """Calculate the area of the square.
@@ -34,7 +25,12 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Print the square with the character #."""
+        """Print the square with the character #.
+
+        position[0] is the number of spaces to skip before printing the square.
+        position[1] is the number of new lines to print
+                    before printing the square.
+        """
         if self.__size == 0:
             print()
         else:
