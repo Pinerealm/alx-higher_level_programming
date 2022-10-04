@@ -100,7 +100,7 @@ class Base:
         t = turtle.Turtle()
         t.speed(3)
         t.pensize(3)
-        t.pencolor("blue")
+        t.pencolor("red")
         for rectangle in list_rectangles:
             t.penup()
             t.goto(rectangle.x, rectangle.y)
