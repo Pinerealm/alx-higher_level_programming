@@ -112,6 +112,7 @@ class Base:
             t.forward(rectangle.width)
             t.left(90)
             t.forward(rectangle.height)
+        t.pencolor("green")
         for square in list_squares:
             t.penup()
             t.goto(square.x, square.y)
