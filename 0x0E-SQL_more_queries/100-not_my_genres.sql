@@ -1,5 +1,5 @@
 -- List all genres not linked with the show 'Dexter'
-SELECT *
+SELECT name
   FROM tv_genres AS g
  WHERE name NOT IN (SELECT name
                       FROM tv_genres AS g
