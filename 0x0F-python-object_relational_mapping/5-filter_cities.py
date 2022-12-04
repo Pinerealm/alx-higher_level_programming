@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This script lists all cities from the database filtered by 
+"""This script lists all cities from the database filtered by
 user-provided state name"""
 
 
