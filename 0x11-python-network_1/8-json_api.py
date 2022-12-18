@@ -14,7 +14,7 @@ if __name__ == '__main__':
     r = requests.post(url, data={'q': q})
     try:
         json = r.json()
-        if json:
+        if json and r.status_code == 200:
             print('[{}] {}'.format(json.get('id'), json.get('name')))
         else:
             print('No result')
