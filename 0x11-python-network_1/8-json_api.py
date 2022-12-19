@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     try:
         json = r.json()
-        if json and r.raise_for_status() is None:
+        if json:
             print('[{}] {}'.format(json.get('id'), json.get('name')))
         else:
             print('No result')
