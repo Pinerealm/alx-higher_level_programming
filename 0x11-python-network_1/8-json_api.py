@@ -10,7 +10,7 @@ if __name__ == '__main__':
         q = sys.argv[1]
     else:
         q = ""
-    url = 'http://689d9351c613.8f0453a5.alx-cod.online:5000/search_user'
+    url = 'http://0.0.0.0:5000/search_user'
     r = requests.post(url, data={'q': q})
 
     try:
