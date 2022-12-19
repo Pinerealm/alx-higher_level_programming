@@ -14,9 +14,9 @@ if __name__ == '__main__':
     r = requests.post(url, data={'q': q})
 
     try:
-        json = r.json()
-        if json:
-            print('[{}] {}'.format(json.get('id'), json.get('name')))
+        data = r.json()
+        if data:
+            print('[{}] {}'.format(data.get('id'), data.get('name')))
         else:
             print('No result')
     except requests.exceptions.JSONDecodeError:
