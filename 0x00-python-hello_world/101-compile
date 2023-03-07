@@ -1,0 +1,6 @@
+#!/bin/bash
+# Compile a python script file
+echo "Compiling $PYFILE"
+py3compile "$PYFILE"
+mv __pycache__/"$(ls __pycache__)" "$PYFILE"c
+# rm -rf __pycache__
