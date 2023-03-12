@@ -8,22 +8,21 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *current;
+	listint_t *current, *tmp;
 	int *array, len_list = 0, idx = 0;
 
 	if (!head || !*head || !(*head)->next)
 		return (1);
-	current = *head;
-	while (current)
+	current = tmp = *head;
+	while (tmp)
 	{
-		current = current->next;
+		tmp = tmp->next;
 		len_list++;
 	}
 
 	array = malloc(sizeof(int) * len_list);
-	while (!array)
-		array = malloc(sizeof(int) * len_list);
-	current = *head;
+	if (!array)
+		exit(1);
 	for (len_list = 0; current; len_list++)
 	{
 		array[len_list] = current->n;
