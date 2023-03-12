@@ -3,4 +3,4 @@
 *linked_lists.c
 a.out
 *.pyc
-*[[:digit:]].py
+[^0-9]*[[:digit:]].py
