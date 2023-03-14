@@ -4,3 +4,5 @@
 a.out
 *.pyc
 [^0-9]*[[:digit:]].py
+100-test_lists.py
+*.so
