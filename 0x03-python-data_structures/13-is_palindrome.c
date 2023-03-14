@@ -1,4 +1,5 @@
 #include "lists.h"
+int is_palindrome_helper(listint_t **head, listint_t *tail);
 
 /**
  * is_palindrome - checks if a singly linked list is a palindrome
@@ -8,37 +9,28 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *current, *tmp;
-	int *array, list_len = 0, idx = 0;
-
 	if (!head || !*head || !(*head)->next)
 		return (1);
-	current = tmp = *head;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		list_len++;
-	}
+	return(is_palindrome_helper(head, *head));
+}
 
-	array = malloc(sizeof(int) * list_len);
-	if (!array)
-		exit(1);
-	for (list_len = 0; current; list_len++)
-	{
-		array[list_len] = current->n;
-		current = current->next;
-	}
-	list_len--;
+/**
+ * is_palindrome_helper - helper function for is_palindrome
+ * @head: double pointer to head of list
+ * @tail: pointer to tail of list
+ *
+ * Return: 0 if it is not a palindrome, otherwise 1
+ */
+int is_palindrome_helper(listint_t **head, listint_t *tail)
+{
+	int is_palindrome = 1;
 
-	while (idx < list_len)
-	{
-		if (array[idx++] != array[list_len--])
-		{
-			free(array);
-			return (0);
-		}
-	}
-	free(array);
+	if (tail->next)
+		is_palindrome = is_palindrome_helper(head, tail->next);
+	if (is_palindrome && (*head)->n == tail->n)
+		*head = (*head)->next;
+	else
+		is_palindrome = 0;
 
-	return (1);
+	return (is_palindrome);
 }
