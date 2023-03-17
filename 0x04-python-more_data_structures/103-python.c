@@ -53,6 +53,10 @@ void print_python_bytes(PyObject *p)
 	bytes_len = PyBytes_Size(p) < 10 ? PyBytes_Size(p) + 1 : 10;
 	printf("  first %ld bytes: ", bytes_len);
 	for (idx = 0; idx < bytes_len; idx++)
-		printf("%02hhx ", PyBytes_AsString(p)[idx]);
+	{
+		if (idx % 10)
+			printf(" ");
+		printf("%02hhx", PyBytes_AsString(p)[idx]);
+	}
 	printf("\n");
 }
