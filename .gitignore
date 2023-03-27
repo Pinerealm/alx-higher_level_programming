@@ -1,8 +1,9 @@
-*[main|tests].py
+*main.py
+*tests.py
 *main.c
 *linked_lists.c
 a.out
 *.pyc
-[^0-9]*[[:digit:]].py
+*_[0-9].py
 100-test_lists.py
 *.so
