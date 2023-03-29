@@ -25,7 +25,7 @@ class Square:
 
     def my_print(self):
         """Print out the square to stdout using the character #.
-    
+
         position[0] is the number of spaces to skip before printing the square.
         position[1] is the number of new lines to print
                     before printing the square.
