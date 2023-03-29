@@ -88,7 +88,7 @@ class SinglyLinkedList(Node):
             current.next_node = new_node
 
     def __str__(self):
-        """Return a string representation of the list."""
+        """Return the string representation of the list, one node per line."""
         current = self.__head
         string = ""
         while current is not None:
