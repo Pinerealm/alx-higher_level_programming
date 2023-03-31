@@ -32,10 +32,16 @@ TypeError: b must be an integer
 Raise an OverflowError exception
 ================================
 >>> add_integer(2e110000, 0.1)
+Traceback (most recent call last):
+...............
 OverflowError: result is too large
 
 >>> add_integer(2, 3e110000)
+Traceback (most recent call last):
+...............
 OverflowError: result is too large
 
 >>> add_integer(2e110000, 3e110000)
+Traceback (most recent call last):
+...............
 OverflowError: result is too large

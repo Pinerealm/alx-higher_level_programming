@@ -20,10 +20,8 @@ def add_integer(a, b=98):
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
-    try:
-        result = int(a) + int(b)
-    except OverflowError:
-        print("OverflowError: result is too large")
-        return
+    result = a + b
+    if result in (float('inf'), float('-inf')):
+        raise OverflowError("result is too large")
     
-    return int(result)
+    return int(a) + int(b)
