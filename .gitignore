@@ -6,4 +6,5 @@ a.out
 *.pyc
 *_[0-9].py
 100-test_lists.py
+6-max_integer.py
 *.so
