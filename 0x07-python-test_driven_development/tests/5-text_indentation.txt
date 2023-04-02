@@ -1,0 +1,50 @@
+This tests the ``text_indentation`` function of the ``5-text_indentation`` module.
+
+Normal case
+===========
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("Holberton. School: How are you?")
+Holberton.
+<BLANKLINE>
+School:
+<BLANKLINE>
+How are you?
+<BLANKLINE>
+
+>>> text_indentation("Holberton. School? How are you? Great!")
+Holberton.
+<BLANKLINE>
+School?
+<BLANKLINE>
+How are you?
+<BLANKLINE>
+Great!
+
+>>> text_indentation("Holberton. School? How are you:    John")
+Holberton.
+<BLANKLINE>
+School?
+<BLANKLINE>
+How are you:
+<BLANKLINE>
+John
+
+** An empty string should do nothing:
+>>> text_indentation("")
+
+
+Raises TypeError exceptions
+===========================
+** If ``text`` is not a string:
+-------------------------------
+>>> text_indentation(98)
+Traceback (most recent call last):
+..........
+TypeError: text must be a string
+
+** If no argument is passed:
+----------------------------
+>>> text_indentation()
+Traceback (most recent call last):
+..........
+TypeError: text_indentation() missing 1 required positional argument: 'text'
