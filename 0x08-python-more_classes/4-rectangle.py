@@ -86,13 +86,13 @@ class Rectangle:
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
-        """Returns a string representation of the rectangle.
+        """Returns the unofficial string representation of the rectangle.
         """
         if self.__width == 0 or self.__height == 0:
             return ""
         return "\n".join(["#" * self.__width] * self.__height)
 
     def __repr__(self):
-        """Returns the string representation of a rectangle.
+        """Returns the official representation of a rectangle.
         """
         return "Rectangle({}, {})".format(self.__width, self.__height)
