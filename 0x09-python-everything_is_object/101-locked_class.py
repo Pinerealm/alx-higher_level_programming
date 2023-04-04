@@ -4,7 +4,7 @@
 
 class LockedClass:
     """Defines a locked class with no class or object attribute.
-    
+
     Attributes:
         __slots__ (list): list of attributes that can be added to the object
     """
