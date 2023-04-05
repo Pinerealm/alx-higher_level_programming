@@ -23,5 +23,5 @@ def add_integer(a, b=98):
     result = a + b
     if result in (float('inf'), float('-inf')):
         raise OverflowError("result is too large")
-    
+
     return int(a) + int(b)
