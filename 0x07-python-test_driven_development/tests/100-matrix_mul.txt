@@ -93,6 +93,18 @@ Traceback (most recent call last):
     ...
 TypeError: each row of m_a must be of the same size
 
+** If one or no arguments are passed
+------------------------------------
+>>> matrix_mul([[1, 2], [3, 4]])
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> matrix_mul()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
 
 Raises ValueError exceptions
 ============================
