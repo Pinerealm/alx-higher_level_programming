@@ -1,0 +1,32 @@
+Doctests for the ``print_sorted`` method of the ``MyList`` class.
+
+Normal cases
+============
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = MyList([5, 10, 3, 7, 2])
+>>> my_list.print_sorted()
+[2, 3, 5, 7, 10]
+
+** An empty list
+----------------
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
+
+** A list with one element
+--------------------------
+>>> my_list = MyList([5])
+>>> my_list.print_sorted()
+[5]
+
+** A list with a negative number
+--------------------------------
+>>> my_list = MyList([5, -10, 3, 7, 2])
+>>> my_list.print_sorted()
+[-10, 2, 3, 5, 7]
+
+** A list with all negative numbers
+-----------------------------------
+>>> my_list = MyList([-5, -10, -3, -7, -2])
+>>> my_list.print_sorted()
+[-10, -7, -5, -3, -2]
