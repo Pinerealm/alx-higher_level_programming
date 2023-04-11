@@ -6,11 +6,15 @@ Normal cases
 >>> my_list = MyList([5, 10, 3, 7, 2])
 >>> my_list.print_sorted()
 [2, 3, 5, 7, 10]
+>>> print(my_list)
+[5, 10, 3, 7, 2]
 
 ** An empty list
 ----------------
 >>> my_list = MyList()
 >>> my_list.print_sorted()
+[]
+>>> print(my_list)
 []
 
 ** A list with one element
@@ -18,15 +22,31 @@ Normal cases
 >>> my_list = MyList([5])
 >>> my_list.print_sorted()
 [5]
+>>> print(my_list)
+[5]
 
 ** A list with a negative number
 --------------------------------
 >>> my_list = MyList([5, -10, 3, 7, 2])
 >>> my_list.print_sorted()
 [-10, 2, 3, 5, 7]
+>>> print(my_list)
+[5, -10, 3, 7, 2]
 
 ** A list with all negative numbers
 -----------------------------------
 >>> my_list = MyList([-5, -10, -3, -7, -2])
 >>> my_list.print_sorted()
 [-10, -7, -5, -3, -2]
+>>> print(my_list)
+[-5, -10, -3, -7, -2]
+
+
+Raises AttributeError exceptions
+================================
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = [5, 10, 3, 7, 2]
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+...
+AttributeError: 'list' object has no attribute 'print_sorted'
