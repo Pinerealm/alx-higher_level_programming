@@ -29,7 +29,7 @@ class Student:
 
     def reload_from_json(self, json):
         """Replaces all attributes of the Student instance
-        
+
         Args:
             json (dict): A dictionary of attributes to replace
         """
