@@ -5,7 +5,7 @@ import sys
 
 def print_stats(file_size, status_codes):
     """Prints the stats
-    
+
     Args:
         file_size (int): The file size
         status_codes (dict): The status codes
