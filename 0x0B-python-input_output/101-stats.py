@@ -9,6 +9,7 @@ def print_stats(file_size, status_codes):
     for key in sorted(status_codes):
         print(f'{key}: {status_codes[key]}')
 
+
 if __name__ == "__main__":
     line_count = 0
     file_size = 0
