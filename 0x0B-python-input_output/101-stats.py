@@ -22,7 +22,11 @@ if __name__ == "__main__":
 
     while True:
         try:
-            line = sys.stdin.readline().rstrip()
+            line = sys.stdin.readline()
+            if not line:
+                print_stats(file_size, status_codes)
+                break
+            line = line.rstrip()
             line_count += 1
             file_size += int(line.split()[-1])
             code = line.split()[-2]
