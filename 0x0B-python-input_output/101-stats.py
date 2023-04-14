@@ -12,13 +12,15 @@ def print_stats(file_size, status_codes):
     """
     print(f'File size: {file_size}')
     for key in sorted(status_codes):
-        print(f'{key}: {status_codes[key]}')
+        if status_codes[key] > 0:
+            print(f'{key}: {status_codes[key]}')
 
 
 if __name__ == "__main__":
     line_count = 0
     file_size = 0
-    status_codes = {}
+    status_codes = {200: 0, 301: 0, 400: 0, 401: 0,
+                    403: 0, 404: 0, 405: 0, 500: 0}
 
     while True:
         try:
@@ -29,9 +31,10 @@ if __name__ == "__main__":
             line = line.rstrip()
             line_count += 1
             file_size += int(line.split()[-1])
-            code = line.split()[-2]
+            code = int(line.split()[-2])
 
-            status_codes[code] = status_codes.get(code, 0) + 1
+            if code in status_codes:
+                status_codes[code] += 1
             if line_count % 10 == 0:
                 print_stats(file_size, status_codes)
 
