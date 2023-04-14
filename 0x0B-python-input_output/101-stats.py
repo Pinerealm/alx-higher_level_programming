@@ -27,9 +27,11 @@ if __name__ == "__main__":
             if not line:
                 print_stats(file_size, status_codes)
                 break
-            line = line.rstrip()
+            line = line.rstrip().split()
             line_count += 1
-            code, size = line.split()[-2:]
+            if len(line) < 2:
+                continue
+            code, size = line[-2], line[-1]
             if size.isdigit():
                 file_size += int(size)
 
