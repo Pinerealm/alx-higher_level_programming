@@ -69,3 +69,21 @@ class TestRectangle(unittest.TestCase):
         for i in range(1, 20):
             r = Rectangle(i, i)
             self.assertEqual(r.area(), i * i)
+
+    def test_display(self):
+        """Test correct display."""
+        import sys
+        import io
+
+        f = io.StringIO()
+        sys.stdout = f
+        r = Rectangle(2, 2).display()
+        self.assertEqual(f.getvalue(), "##\n##\n")
+
+        f = io.StringIO()
+        sys.stdout = f
+        r = Rectangle(4, 4).display()
+        self.assertEqual(f.getvalue(), "####\n####\n####\n####\n")
+
+        sys.stdout = sys.__stdout__
+        f.close()
