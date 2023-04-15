@@ -170,3 +170,28 @@ class TestRectangle(unittest.TestCase):
 
         r.update(x=2, name="Holberton", height=4, y=3, width=4, id=89)
         self.assertEqual(str(r), "[Rectangle] (89) 2/3 - 4/4")
+
+    def test_to_dictionary(self):
+        """Test correct dictionary representation."""
+        r1 = Rectangle(10, 2, 1, 9)
+        d1 = r1.to_dictionary()
+        result = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertEqual(d, result)
+        self.assertIsInstance(d, dict)
+
+        r = Rectangle(1, 1)
+        d = r.to_dictionary()
+        result = {'x': 0, 'y': 0, 'id': 2, 'height': 1, 'width': 1}
+        self.assertEqual(d, result)
+        self.assertIsInstance(d, dict)
+
+        r = Rectangle(5, 8, 3, 4, 9)
+        d = r.to_dictionary()
+        result = {'x': 3, 'y': 4, 'id': 9, 'height': 8, 'width': 5}
+        self.assertEqual(d, result)
+        self.assertIsInstance(d, dict)
+
+        # Test update with dictionary
+        r.update(**d1)
+        self.assertEqual(str(r), "[Rectangle] (1) 1/9 - 10/2")
+        self.assertNotEqual(r, r1)
