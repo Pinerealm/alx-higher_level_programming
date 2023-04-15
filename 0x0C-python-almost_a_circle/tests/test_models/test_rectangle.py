@@ -111,6 +111,16 @@ class TestRectangle(unittest.TestCase):
         Rectangle(4, 4).display()
         self.assertEqual(f.getvalue(), "####\n####\n####\n####\n")
 
+        f = io.StringIO()
+        sys.stdout = f
+        Rectangle(2, 3, 2, 2).display()
+        self.assertEqual(f.getvalue(), "\n\n  ##\n  ##\n  ##\n")
+
+        f = io.StringIO()
+        sys.stdout = f
+        Rectangle(3, 2, 1).display()
+        self.assertEqual(f.getvalue(), " ###\n ###\n")
+
         sys.stdout = sys.__stdout__
         f.close()
 
