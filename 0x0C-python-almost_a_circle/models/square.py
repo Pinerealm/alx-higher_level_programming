@@ -32,3 +32,15 @@ class Square(Rectangle):
         """Returns an informal string representation of a square"""
         return "[Square] ({}) {}/{} - {}".format(
             self.id, self.x, self.y, self.width)
+
+    def update(self, *args, **kwargs):
+        """Updates the attributes of a square"""
+        attributes = ["id", "size", "x", "y"]
+        if args:
+            len_args = len(args) if len(args) < 4 else 4
+            for i in range(len_args):
+                setattr(self, attributes[i], args[i])
+        else:
+            for key, value in kwargs.items():
+                if key in attributes:
+                    setattr(self, key, value)

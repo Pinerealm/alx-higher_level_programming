@@ -108,3 +108,29 @@ class TestSquare(unittest.TestCase):
 
         sys.stdout = sys.__stdout__
         f.close()
+
+    def test_update(self):
+        """Test correct update"""
+        s = Square(10, 10, 10)
+        s.update(89)
+        self.assertEqual(str(s), "[Square] (89) 10/10 - 10")
+        s.update(89, 2)
+        self.assertEqual(str(s), "[Square] (89) 10/10 - 2")
+
+        s.update(89, 2, 3)
+        self.assertEqual(str(s), "[Square] (89) 3/10 - 2")
+        s.update(89, 2, 3, 4)
+        self.assertEqual(str(s), "[Square] (89) 3/4 - 2")
+
+        s.update(20, 4, 5, 6, 7, 8, 9, 10)
+        self.assertEqual(str(s), "[Square] (20) 5/6 - 4")
+        s.update()
+        self.assertEqual(str(s), "[Square] (20) 5/6 - 4")
+
+        s.update(x=1, size=4, y=3, id=15)
+        self.assertEqual(str(s), "[Square] (15) 1/3 - 4")
+        s.update(size=8, y=1, x=2, id=30)
+        self.assertEqual(str(s), "[Square] (30) 2/1 - 8")
+
+        s.update(y=1, name="Square", size=4, x=2, id=35)
+        self.assertEqual(str(s), "[Square] (35) 2/1 - 4")
