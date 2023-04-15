@@ -24,3 +24,17 @@ class TestBase(unittest.TestCase):
 
         b5 = Base()
         self.assertNotEqual(b5.id, 3)
+
+    def test_nb_objects(self):
+        """Tests for correct number of objects."""
+        b1 = Base()
+        self.assertEqual(Base._Base__nb_objects, 1)
+        b2 = Base()
+        self.assertEqual(Base._Base__nb_objects, 2)
+        b3 = Base(12)
+        self.assertEqual(Base._Base__nb_objects, 2)
+        b4 = Base()
+        self.assertEqual(Base._Base__nb_objects, 3)
+
+        b5 = Base()
+        self.assertNotEqual(Base._Base__nb_objects, 3)
