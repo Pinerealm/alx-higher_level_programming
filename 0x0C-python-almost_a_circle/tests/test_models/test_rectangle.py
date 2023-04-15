@@ -25,7 +25,7 @@ class TestRectangle(unittest.TestCase):
         for i in range(1, 20):
             r = Rectangle(i, 1)
             self.assertEqual(r.width, i)
-        
+
         r.width = 10
         self.assertEqual(r.width, 10)
         self.assertRaises(TypeError, Rectangle, "1", 1)
@@ -63,3 +63,9 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.y, 6)
         self.assertRaises(TypeError, Rectangle, 1, 1, 1, "1")
         self.assertRaises(ValueError, Rectangle, 1, 1, 1, -1)
+
+    def test_area(self):
+        """Test correct area calculation."""
+        for i in range(1, 20):
+            r = Rectangle(i, i)
+            self.assertEqual(r.area(), i * i)
