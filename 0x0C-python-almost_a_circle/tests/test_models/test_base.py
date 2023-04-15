@@ -13,28 +13,18 @@ class TestBase(unittest.TestCase):
 
     def test_id(self):
         """Tests correct id assignment after instantiation."""
-        b1 = Base()
-        self.assertEqual(b1.id, 1)
-        b2 = Base()
-        self.assertEqual(b2.id, 2)
-        b3 = Base(12)
-        self.assertEqual(b3.id, 12)
-        b4 = Base()
-        self.assertEqual(b4.id, 3)
+        for i in range(1, 20):
+            b = Base()
+            self.assertEqual(b.id, i)
 
-        b5 = Base()
-        self.assertNotEqual(b5.id, 3)
+        b = Base(12)
+        self.assertEqual(b.id, 12)
 
     def test_nb_objects(self):
         """Tests for correct number of objects."""
-        b1 = Base()
-        self.assertEqual(Base._Base__nb_objects, 1)
-        b2 = Base()
-        self.assertEqual(Base._Base__nb_objects, 2)
-        b3 = Base(12)
-        self.assertEqual(Base._Base__nb_objects, 2)
-        b4 = Base()
-        self.assertEqual(Base._Base__nb_objects, 3)
+        for i in range(1, 20):
+            b = Base()
+            self.assertEqual(Base._Base__nb_objects, i)
 
-        b5 = Base()
-        self.assertNotEqual(Base._Base__nb_objects, 3)
+        b = Base(12)
+        self.assertNotEqual(Base._Base__nb_objects, 20)

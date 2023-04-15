@@ -13,58 +13,53 @@ class TestRectangle(unittest.TestCase):
 
     def test_id(self):
         """Test correct id assignment after instantiation."""
-        r1 = Rectangle(1, 1)
-        self.assertEqual(r1.id, 1)
-        r2 = Rectangle(1, 1)
-        self.assertEqual(r2.id, 2)
-        r3 = Rectangle(1, 1, 0, 0, 12)
-        self.assertEqual(r3.id, 12)
-        r4 = Rectangle(1, 1)
-        self.assertEqual(r4.id, 3)
+        for i in range(1, 20):
+            r = Rectangle(1, 1)
+            self.assertEqual(r.id, i)
 
-        r5 = Rectangle(1, 1)
-        self.assertNotEqual(r5.id, 3)
+        r = Rectangle(1, 1, 0, 0, 12)
+        self.assertEqual(r.id, 12)
 
     def test_width(self):
         """Test correct width assignment."""
-        r1 = Rectangle(1, 1)
-        self.assertEqual(r1.width, 1)
-        r2 = Rectangle(2, 1)
-        self.assertEqual(r2.width, 2)
-        r3 = Rectangle(3, 1)
-        self.assertEqual(r3.width, 3)
-        r2.width = 10
-        self.assertEqual(r2.width, 10)
+        for i in range(1, 20):
+            r = Rectangle(i, 1)
+            self.assertEqual(r.width, i)
+        
+        r.width = 10
+        self.assertEqual(r.width, 10)
+        self.assertRaises(TypeError, Rectangle, "1", 1)
+        self.assertRaises(ValueError, Rectangle, 0, 1)
 
     def test_height(self):
         """Test correct height assignment."""
-        r1 = Rectangle(1, 1)
-        self.assertEqual(r1.height, 1)
-        r2 = Rectangle(1, 2)
-        self.assertEqual(r2.height, 2)
-        r3 = Rectangle(1, 3)
-        self.assertEqual(r3.height, 3)
-        r2.height = 10
-        self.assertEqual(r2.height, 10)
+        for i in range(1, 20):
+            r = Rectangle(1, i)
+            self.assertEqual(r.height, i)
+
+        r.height = 10
+        self.assertEqual(r.height, 10)
+        self.assertRaises(TypeError, Rectangle, 1, "1")
+        self.assertRaises(ValueError, Rectangle, 1, 0)
 
     def test_x(self):
         """Test correct x coordinate assignment."""
-        r1 = Rectangle(1, 1)
-        self.assertEqual(r1.x, 0)
-        r2 = Rectangle(1, 1, 2)
-        self.assertEqual(r2.x, 2)
-        r3 = Rectangle(1, 1, 3)
-        self.assertEqual(r3.x, 3)
-        r2.x = 10
-        self.assertEqual(r2.x, 10)
+        for i in range(0, 20):
+            r = Rectangle(1, 1, i)
+            self.assertEqual(r.x, i)
+
+        r.x = 5
+        self.assertEqual(r.x, 5)
+        self.assertRaises(TypeError, Rectangle, 1, 1, "1")
+        self.assertRaises(ValueError, Rectangle, 1, 1, -1)
 
     def test_y(self):
         """Test correct y coordinate assignment."""
-        r1 = Rectangle(1, 1)
-        self.assertEqual(r1.y, 0)
-        r2 = Rectangle(1, 1, 0, 2)
-        self.assertEqual(r2.y, 2)
-        r3 = Rectangle(1, 1, 0, 3)
-        self.assertEqual(r3.y, 3)
-        r2.y = 10
-        self.assertEqual(r2.y, 10)
+        for i in range(0, 20):
+            r = Rectangle(1, 1, 0, i)
+            self.assertEqual(r.y, i)
+
+        r.y = 6
+        self.assertEqual(r.y, 6)
+        self.assertRaises(TypeError, Rectangle, 1, 1, 1, "1")
+        self.assertRaises(ValueError, Rectangle, 1, 1, 1, -1)
