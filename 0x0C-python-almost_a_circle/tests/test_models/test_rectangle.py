@@ -20,6 +20,16 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(1, 1, 0, 0, 12)
         self.assertEqual(r.id, 12)
 
+        with self.assertRaises(TypeError) as e:
+            Rectangle(1)
+        self.assertEqual(str(e.exception), "__init__() missing 1 required "
+                                           "positional argument: 'height'")
+        with self.assertRaises(TypeError) as e:
+            Rectangle()
+        self.assertEqual(str(e.exception), "__init__() missing 2 required "
+                                           "positional arguments: 'width' and "
+                                           "'height'")
+
     def test_width(self):
         """Test correct width assignment."""
         for i in range(1, 20):
@@ -28,8 +38,12 @@ class TestRectangle(unittest.TestCase):
 
         r.width = 10
         self.assertEqual(r.width, 10)
-        self.assertRaises(TypeError, Rectangle, "1", 1)
-        self.assertRaises(ValueError, Rectangle, 0, 1)
+        with self.assertRaises(TypeError) as e:
+            Rectangle("1", 1)
+        self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(ValueError) as e:
+            Rectangle(0, 1)
+        self.assertEqual(str(e.exception), "width must be > 0")
 
     def test_height(self):
         """Test correct height assignment."""
@@ -39,8 +53,12 @@ class TestRectangle(unittest.TestCase):
 
         r.height = 10
         self.assertEqual(r.height, 10)
-        self.assertRaises(TypeError, Rectangle, 1, "1")
-        self.assertRaises(ValueError, Rectangle, 1, 0)
+        with self.assertRaises(TypeError) as e:
+            Rectangle(1, "1")
+        self.assertEqual(str(e.exception), "height must be an integer")
+        with self.assertRaises(ValueError) as e:
+            Rectangle(1, 0)
+        self.assertEqual(str(e.exception), "height must be > 0")
 
     def test_x(self):
         """Test correct x coordinate assignment."""
@@ -50,8 +68,12 @@ class TestRectangle(unittest.TestCase):
 
         r.x = 5
         self.assertEqual(r.x, 5)
-        self.assertRaises(TypeError, Rectangle, 1, 1, "1")
-        self.assertRaises(ValueError, Rectangle, 1, 1, -1)
+        with self.assertRaises(TypeError) as e:
+            Rectangle(1, 1, "1")
+        self.assertEqual(str(e.exception), "x must be an integer")
+        with self.assertRaises(ValueError) as e:
+            Rectangle(1, 1, -1)
+        self.assertEqual(str(e.exception), "x must be >= 0")
 
     def test_y(self):
         """Test correct y coordinate assignment."""
@@ -61,8 +83,12 @@ class TestRectangle(unittest.TestCase):
 
         r.y = 6
         self.assertEqual(r.y, 6)
-        self.assertRaises(TypeError, Rectangle, 1, 1, 1, "1")
-        self.assertRaises(ValueError, Rectangle, 1, 1, 1, -1)
+        with self.assertRaises(TypeError) as e:
+            Rectangle(1, 1, 1, "1")
+        self.assertEqual(str(e.exception), "y must be an integer")
+        with self.assertRaises(ValueError) as e:
+            Rectangle(1, 1, 1, -1)
+        self.assertEqual(str(e.exception), "y must be >= 0")
 
     def test_area(self):
         """Test correct area calculation."""
@@ -77,13 +103,22 @@ class TestRectangle(unittest.TestCase):
 
         f = io.StringIO()
         sys.stdout = f
-        r = Rectangle(2, 2).display()
+        Rectangle(2, 2).display()
         self.assertEqual(f.getvalue(), "##\n##\n")
 
         f = io.StringIO()
         sys.stdout = f
-        r = Rectangle(4, 4).display()
+        Rectangle(4, 4).display()
         self.assertEqual(f.getvalue(), "####\n####\n####\n####\n")
 
         sys.stdout = sys.__stdout__
         f.close()
+
+    def test_str(self):
+        """Test correct string representation."""
+        r = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str(r), "[Rectangle] (12) 2/1 - 4/6")
+        r = Rectangle(5, 5, 1)
+        self.assertEqual(str(r), "[Rectangle] (1) 1/0 - 5/5")
+        r = Rectangle(2, 2)
+        self.assertEqual(str(r), "[Rectangle] (2) 0/0 - 2/2")
