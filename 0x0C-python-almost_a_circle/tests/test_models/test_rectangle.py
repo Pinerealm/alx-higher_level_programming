@@ -130,8 +130,11 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(r), "[Rectangle] (12) 2/1 - 4/6")
         r = Rectangle(5, 5, 1)
         self.assertEqual(str(r), "[Rectangle] (1) 1/0 - 5/5")
+
         r = Rectangle(2, 2)
         self.assertEqual(str(r), "[Rectangle] (2) 0/0 - 2/2")
+        r = Rectangle(1, 1, 1, 1)
+        self.assertEqual(str(r), "[Rectangle] (3) 1/1 - 1/1")
 
     def test_update(self):
         """Test correct update."""
