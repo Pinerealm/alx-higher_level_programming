@@ -134,3 +134,28 @@ class TestSquare(unittest.TestCase):
 
         s.update(y=1, name="Square", size=4, x=2, id=35)
         self.assertEqual(str(s), "[Square] (35) 2/1 - 4")
+
+    def test_to_dictionary(self):
+        """Test correct dictionary representation."""
+        s1 = Square(10, 2, 1)
+        d1 = s1.to_dictionary()
+        result = {'x': 2, 'y': 1, 'id': 1, 'size': 10}
+        self.assertEqual(d1, result)
+        self.assertIsInstance(d1, dict)
+
+        s = Square(1, 1)
+        d = s.to_dictionary()
+        result = {'x': 1, 'y': 0, 'id': 2, 'size': 1}
+        self.assertEqual(d, result)
+        self.assertIsInstance(d, dict)
+
+        s = Square(2, 3, 4, 5)
+        d = s.to_dictionary()
+        result = {'x': 3, 'y': 4, 'id': 5, 'size': 2}
+        self.assertEqual(d, result)
+        self.assertIsInstance(d, dict)
+
+        # Test update with dictionary
+        s.update(**d1)
+        self.assertEqual(str(s), "[Square] (1) 2/1 - 10")
+        self.assertNotEqual(s, s1)
