@@ -139,3 +139,28 @@ class TestBase(unittest.TestCase):
         s2 = Square.create(**s_d)
         self.assertEqual(s2.to_dictionary(), s_d)
         self.assertIsNot(s2, s)
+
+    def test_load_from_file(self):
+        """Tests correct object creation from a JSON file.
+        """
+        r1 = Rectangle(1, 2, 3, 4, 5)
+        r2 = Rectangle(6, 7, 8, 9, 10)
+        r_list = [r1, r2]
+        Rectangle.save_to_file(r_list)
+
+        r_list2 = Rectangle.load_from_file()
+        self.assertEqual(r_list2[0].to_dictionary(), r1.to_dictionary())
+        self.assertEqual(r_list2[1].to_dictionary(), r2.to_dictionary())
+        self.assertNotEqual(r_list2[0], r1)
+        self.assertNotEqual(r_list2[1], r2)
+
+        s1 = Square(1, 2, 3, 4)
+        s2 = Square(5, 6, 7, 8)
+        s_list = [s1, s2]
+        Square.save_to_file(s_list)
+
+        s_list2 = Square.load_from_file()
+        self.assertEqual(s_list2[0].to_dictionary(), s1.to_dictionary())
+        self.assertEqual(s_list2[1].to_dictionary(), s2.to_dictionary())
+        self.assertNotEqual(s_list2[0], s1)
+        self.assertNotEqual(s_list2[1], s2)
