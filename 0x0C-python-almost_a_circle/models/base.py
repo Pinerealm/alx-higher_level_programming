@@ -41,7 +41,7 @@ class Base:
         with open("{}.json".format(cls.__name__), "w") as f:
             f.write(cls.to_json_string(
                 [o.to_dictionary() for o in list_objs]))
-            
+
     @classmethod
     def create(cls, **dictionary):
         """Returns an instance with all attributes already set"""
@@ -51,7 +51,7 @@ class Base:
             dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
-    
+
     @classmethod
     def load_from_file(cls):
         """Returns a list of instances"""

@@ -143,6 +143,12 @@ class TestBase(unittest.TestCase):
     def test_load_from_file(self):
         """Tests correct object creation from a JSON file.
         """
+        import os
+
+        # Change to /tmp to avoid cluttering the directory
+        # Works for unix systems
+        os.chdir("/tmp")
+
         r1 = Rectangle(1, 2, 3, 4, 5)
         r2 = Rectangle(6, 7, 8, 9, 10)
         r_list = [r1, r2]
