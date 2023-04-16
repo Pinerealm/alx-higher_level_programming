@@ -52,3 +52,50 @@ class TestBase(unittest.TestCase):
         s_str = '[{"id": 4, "size": 1, "x": 2, "y": 3}]'
         self.assertEqual(s.to_json_string([s_d]), s_str)
         self.assertIsInstance(s.to_json_string([s_d]), str)
+
+    def test_save_to_file(self):
+        """Tests correct file writing."""
+        import os
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+        os.remove("Rectangle.json")
+
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+        os.remove("Rectangle.json")
+
+        r = Rectangle(1, 2, 3, 4, 5)
+        r2 = Rectangle(6, 7, 8, 9, 10)
+        Rectangle.save_to_file([r, r2])
+        result = '[{"id": 5, "width": 1, "height": 2, "x": 3, "y": 4}, '
+        result += '{"id": 10, "width": 6, "height": 7, "x": 8, "y": 9}]'
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), result)
+        os.remove("Rectangle.json")
+
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+        os.remove("Square.json")
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+        os.remove("Square.json")
+
+        s = Square(1, 2, 3, 4)
+        s2 = Square(5, 6, 7, 8)
+        Square.save_to_file([s, s2])
+        result = '[{"id": 4, "size": 1, "x": 2, "y": 3}, '
+        result += '{"id": 8, "size": 5, "x": 6, "y": 7}]'
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), result)
+        os.remove("Square.json")
