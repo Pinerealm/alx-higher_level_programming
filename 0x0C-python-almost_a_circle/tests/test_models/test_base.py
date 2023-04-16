@@ -99,3 +99,29 @@ class TestBase(unittest.TestCase):
         with open("Square.json", "r") as f:
             self.assertEqual(f.read(), result)
         os.remove("Square.json")
+
+    def test_from_json_string(self):
+        """Tests correct JSON string to list conversion."""
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string("[]"), [])
+
+        j_str = '[{"id": 5, "width": 2, "height": 3, "x": 1, "y": 1}, '
+        j_str += '{"id": 4, "width": 4, "height": 2, "x": 2, "y": 2}]'
+        o_list = [{"id": 5, "width": 2, "height": 3, "x": 1, "y": 1},
+                  {"id": 4, "width": 4, "height": 2, "x": 2, "y": 2}]
+        self.assertEqual(Base.from_json_string(j_str), o_list)
+        self.assertIsInstance(Base.from_json_string(j_str), list)
+
+        r1 = Rectangle(1, 2, 3, 4, 5)
+        r2 = Rectangle(6, 7, 8, 9, 10)
+        r_list = [r1.to_dictionary(), r2.to_dictionary()]
+        r_str = r1.to_json_string(r_list)
+        self.assertEqual(r1.from_json_string(r_str), r_list)
+        self.assertIsInstance(r1.from_json_string(r_str), list)
+
+        s1 = Square(1, 2, 3, 4)
+        s2 = Square(5, 6, 7, 8)
+        s_list = [s1.to_dictionary(), s2.to_dictionary()]
+        s_str = s1.to_json_string(s_list)
+        self.assertEqual(s1.from_json_string(s_str), s_list)
+        self.assertIsInstance(s1.from_json_string(s_str), list)
