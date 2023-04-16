@@ -125,3 +125,17 @@ class TestBase(unittest.TestCase):
         s_str = s1.to_json_string(s_list)
         self.assertEqual(s1.from_json_string(s_str), s_list)
         self.assertIsInstance(s1.from_json_string(s_str), list)
+
+    def test_create(self):
+        """Tests correct object creation from a dictionary."""
+        r = Rectangle(1, 2, 3, 4, 5)
+        r_d = r.to_dictionary()
+        r2 = Rectangle.create(**r_d)
+        self.assertEqual(r2.to_dictionary(), r_d)
+        self.assertIsNot(r2, r)
+
+        s = Square(1, 2, 3, 4)
+        s_d = s.to_dictionary()
+        s2 = Square.create(**s_d)
+        self.assertEqual(s2.to_dictionary(), s_d)
+        self.assertIsNot(s2, s)
