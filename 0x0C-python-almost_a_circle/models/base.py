@@ -70,7 +70,7 @@ class Base:
         """
         if list_objs is None:
             list_objs = []
-        with open("{}.csv".format(cls.__name__), "w",) as f:
+        with open("{}.csv".format(cls.__name__), "w", newline='') as f:
             writer = csv.writer(f)
             for o in list_objs:
                 writer.writerow(o.to_dictionary().values())
@@ -85,7 +85,7 @@ class Base:
 
         if not path.exists("{}.csv".format(cls.__name__)):
             return []
-        with open("{}.csv".format(cls.__name__), "r") as f:
+        with open("{}.csv".format(cls.__name__), "r", newline='') as f:
             reader = csv.reader(f)
             o_list = [list(map(int, row)) for row in reader]
             return [cls.create(**dict(zip(attributes, o))) for o in o_list]
