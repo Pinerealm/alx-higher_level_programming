@@ -5,6 +5,8 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+import os
+
 
 class TestBase(unittest.TestCase):
     """Defines tests for the Base class."""
@@ -55,7 +57,8 @@ class TestBase(unittest.TestCase):
 
     def test_save_to_file(self):
         """Tests correct file writing."""
-        import os
+        # Change to /tmp to avoid overwriting useful files
+        os.chdir('/tmp')
         if os.path.exists("Rectangle.json"):
             os.remove("Rectangle.json")
 
@@ -143,9 +146,7 @@ class TestBase(unittest.TestCase):
     def test_load_from_file(self):
         """Tests correct object creation from a JSON file.
         """
-        import os
-
-        # Change to /tmp to avoid cluttering the directory
+        # Change to /tmp to avoid overwriting useful files
         # Works for unix systems
         os.chdir("/tmp")
 
@@ -170,3 +171,56 @@ class TestBase(unittest.TestCase):
         self.assertEqual(s_list2[1].to_dictionary(), s2.to_dictionary())
         self.assertNotEqual(s_list2[0], s1)
         self.assertNotEqual(s_list2[1], s2)
+
+    def test_save_load_to_file_csv(self):
+        """Tests correct CSV serialization/deserialization of objects.
+        """
+        # Change to /tmp to avoid overwriting useful files
+        # Works for unix systems
+        os.chdir("/tmp")
+
+        if os.path.exists("Rectangle.csv"):
+            os.remove("Rectangle.csv")
+
+        Rectangle.save_to_file_csv(None)
+        with open("Rectangle.csv", "r") as f:
+            self.assertEqual(f.read(), "")
+        os.remove("Rectangle.csv")
+
+        Rectangle.save_to_file_csv([])
+        with open("Rectangle.csv", "r") as f:
+            self.assertEqual(f.read(), "")
+        os.remove("Rectangle.csv")
+
+        r = Rectangle(1, 2, 3, 4, 5)
+        r2 = Rectangle(6, 7, 8, 9, 10)
+        Rectangle.save_to_file_csv([r, r2])
+        r3, r4 = Rectangle.load_from_file_csv()
+
+        self.assertEqual(r3.to_dictionary(), r.to_dictionary())
+        self.assertEqual(r4.to_dictionary(), r2.to_dictionary())
+        self.assertNotEqual(r3, r)
+        self.assertNotEqual(r4, r2)
+
+        if os.path.exists("Square.csv"):
+            os.remove("Square.csv")
+
+        Square.save_to_file_csv(None)
+        with open("Square.csv", "r") as f:
+            self.assertEqual(f.read(), "")
+        os.remove("Square.csv")
+
+        Square.save_to_file_csv([])
+        with open("Square.csv", "r") as f:
+            self.assertEqual(f.read(), "")
+        os.remove("Square.csv")
+
+        s = Square(1, 2, 3, 4)
+        s2 = Square(5, 6, 7, 8)
+        Square.save_to_file_csv([s, s2])
+        s3, s4 = Square.load_from_file_csv()
+
+        self.assertEqual(s3.to_dictionary(), s.to_dictionary())
+        self.assertEqual(s4.to_dictionary(), s2.to_dictionary())
+        self.assertNotEqual(s3, s)
+        self.assertNotEqual(s4, s2)

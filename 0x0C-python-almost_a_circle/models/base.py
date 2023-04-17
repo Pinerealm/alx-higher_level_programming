@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """The Base module"""
 import json
+import csv
+from os import path
 
 
 class Base:
@@ -55,10 +57,35 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """Returns a list of instances"""
-        from os import path
-
         if not path.exists("{}.json".format(cls.__name__)):
             return []
         with open("{}.json".format(cls.__name__), "r") as f:
             o_list = cls.from_json_string(f.read())
             return [cls.create(**o_dict) for o_dict in o_list]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Writes the CSV string representation of a list of objects
+        to a file
+        """
+        if list_objs is None:
+            list_objs = []
+        with open("{}.csv".format(cls.__name__), "w",) as f:
+            writer = csv.writer(f)
+            for o in list_objs:
+                writer.writerow(o.to_dictionary().values())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Returns a list of instances from a CSV file"""
+        if cls.__name__ == 'Rectangle':
+            attributes = ['id', 'width', 'height', 'x', 'y']
+        elif cls.__name__ == 'Square':
+            attributes = ['id', 'size', 'x', 'y']
+
+        if not path.exists("{}.csv".format(cls.__name__)):
+            return []
+        with open("{}.csv".format(cls.__name__), "r") as f:
+            reader = csv.reader(f)
+            o_list = [list(map(int, row)) for row in reader]
+            return [cls.create(**dict(zip(attributes, o))) for o in o_list]
