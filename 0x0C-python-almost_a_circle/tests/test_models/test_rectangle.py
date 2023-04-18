@@ -176,8 +176,8 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 2, 1, 9)
         d1 = r1.to_dictionary()
         result = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
-        self.assertEqual(d, result)
-        self.assertIsInstance(d, dict)
+        self.assertEqual(d1, result)
+        self.assertIsInstance(d1, dict)
 
         r = Rectangle(1, 1)
         d = r.to_dictionary()
