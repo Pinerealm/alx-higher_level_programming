@@ -89,3 +89,27 @@ class Base:
             reader = csv.reader(f)
             o_list = [list(map(int, row)) for row in reader]
             return [cls.create(**dict(zip(attributes, o))) for o in o_list]
+
+    def draw(list_rectangles, list_squares):
+        """Draws the rectangles and squares using the turtle module.
+        """
+        import turtle
+
+        turtle.speed('slowest')
+        turtle.pensize(3)
+        turtle.penup()
+        turtle.goto(-100, 300)
+        turtle.write("Rectangles and Squares", font=("Arial", 16, "bold"))
+        for o in list_rectangles + list_squares:
+            turtle.color('red', 'green')
+            turtle.begin_fill()
+            turtle.penup()
+            turtle.goto(o.x, o.y)
+            turtle.pendown()
+            for i in range(2):
+                turtle.forward(o.width)
+                turtle.left(90)
+                turtle.forward(o.height)
+                turtle.left(90)
+            turtle.end_fill()
+        turtle.done()
