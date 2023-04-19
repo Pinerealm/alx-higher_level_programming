@@ -43,6 +43,9 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             Square(0)
         self.assertEqual(str(e.exception), "width must be > 0")
+        with self.assertRaises(ValueError) as e:
+            Square(-1)
+        self.assertEqual(str(e.exception), "width must be > 0")
 
     def test_x(self):
         """Test correct x coordinate assignment."""
