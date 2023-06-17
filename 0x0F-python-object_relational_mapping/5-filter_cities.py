@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all cities in a user-provided state from the 
+"""Lists all cities in a user-provided state from the
 database, hbtn_0e_4_usa
 """
 
