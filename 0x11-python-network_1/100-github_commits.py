@@ -16,7 +16,7 @@ if __name__ == '__main__':
         json = r.json()
         for i in range(10):
             print('{}: {}'.format(json[i].get('sha'),
-                                     json[i].get('commit').get('author')
-                                            .get('name')))
+                                  json[i].get('commit').get('author')
+                                         .get('name')))
     except requests.exceptions.JSONDecodeError:
         print('Not a valid JSON')
