@@ -13,10 +13,15 @@ if __name__ == '__main__':
     r = requests.get(url)
 
     try:
+        count = 0
         json = r.json()
-        for i in range(10):
-            print('{}: {}'.format(json[i].get('sha'),
-                                  json[i].get('commit').get('author')
-                                         .get('name')))
+        print(json[1])
+        for commit in json:
+            print('{}: {}'.format(commit.get('sha'),
+                                  commit.get('commit').get('author')
+                                        .get('name')))
+            count += 1
+            if count == 10:
+                break
     except ValueError:
         print('Not a valid JSON')
