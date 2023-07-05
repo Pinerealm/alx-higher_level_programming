@@ -15,7 +15,6 @@ if __name__ == '__main__':
     try:
         count = 0
         json = r.json()
-        print(json[1])
         for commit in json:
             print('{}: {}'.format(commit.get('sha'),
                                   commit.get('commit').get('author')
