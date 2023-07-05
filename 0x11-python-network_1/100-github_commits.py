@@ -18,5 +18,5 @@ if __name__ == '__main__':
             print('{}: {}'.format(json[i].get('sha'),
                                   json[i].get('commit').get('author')
                                          .get('name')))
-    except requests.exceptions.JSONDecodeError:
+    except ValueError:
         print('Not a valid JSON')
