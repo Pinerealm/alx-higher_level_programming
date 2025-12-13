@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <assert.h>
-#include <pyport.h>
-#include <object.h>
-#include <listobject.h>
+#include <Python.h>
 
 /**
  * print_python_list_info - prints some basic info about Python lists
