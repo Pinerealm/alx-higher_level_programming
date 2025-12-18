@@ -80,7 +80,7 @@ class Rectangle:
         Returns:
             The area of the rectangle.
         """
-        return self.__width * self.__height
+        return self.width * self.height
 
     def perimeter(self):
         """Calculates the perimeter of a rectangle.
@@ -88,22 +88,21 @@ class Rectangle:
         Returns:
             The perimeter of the rectangle.
         """
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return 0
-        return 2 * (self.__width + self.__height)
+        return 2 * (self.width + self.height)
 
     def __str__(self):
         """Returns the unofficial string representation of the rectangle.
         """
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join([str(self.print_symbol) * self.__width]
-                         * self.__height)
+        return "\n".join([str(self.print_symbol) * self.width] * self.height)
 
     def __repr__(self):
         """Returns the official representation of a rectangle.
         """
-        return "Rectangle({}, {})".format(self.__width, self.__height)
+        return "Rectangle({}, {})".format(self.width, self.height)
 
     def __del__(self):
         """Prints a message when an instance is deleted."""
