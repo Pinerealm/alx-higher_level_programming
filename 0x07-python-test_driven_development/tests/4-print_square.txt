@@ -31,8 +31,6 @@ Traceback (most recent call last):
 ..........
 TypeError: size must be an integer
 
-** If ``size`` is a float and is less than 0
--------------------------------------------
 >>> print_square(-2.0)
 Traceback (most recent call last):
 ..........
