@@ -16,18 +16,17 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    i = 0
-    text_len = len(text)
-    string = ""
-    while i < text_len:
-        if text[i] in ".?:":
-            string += text[i] + "\n\n"
-            print(string, end="")
-            string = ""
-            while i < text_len - 1 and text[i + 1] in " \t":
-                i += 1
-            i += 1
-        else:
-            string += text[i]
-            i += 1
-    print(string, end="")
+    buffer = ""
+    skip_spaces = True
+
+    for char in text:
+        if skip_spaces and char in " \t":
+            continue
+        skip_spaces = False
+        buffer += char
+
+        if char in ".?:":
+            buffer += "\n\n"
+            skip_spaces = True
+
+    print(buffer, end="")
