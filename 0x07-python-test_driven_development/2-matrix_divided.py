@@ -19,12 +19,9 @@ def matrix_divided(matrix, div):
         ZeroDivisionError: if div is 0
         OverflowError: if the divisor is too large
     """
-    if not isinstance(matrix, list):
-        raise TypeError("matrix must be a matrix (list of lists)"
-                        " of integers/floats")
-    if len(matrix) == 0 or len(matrix[0]) == 0:
-        raise TypeError("matrix must be a matrix (list of lists)"
-                        " of integers/floats")
+    matrix_msg = "matrix must be a matrix (list of lists) of integers/floats"
+    if not isinstance(matrix, list) or len(matrix) == 0 or len(matrix[0]) == 0:
+        raise TypeError(matrix_msg)
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
     if div == 0:
@@ -33,15 +30,13 @@ def matrix_divided(matrix, div):
     new_matrix = []
     for row in matrix:
         if not isinstance(row, list):
-            raise TypeError("matrix must be a matrix (list of lists)"
-                            " of integers/floats")
+            raise TypeError(matrix_msg)
         if len(row) != len(matrix[0]):
             raise TypeError("Each row of the matrix must have the same size")
         new_row = []
         for element in row:
             if not isinstance(element, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists)"
-                                " of integers/floats")
+                raise TypeError(matrix_msg)
             new_row.append(round(element / div, 2))
         new_matrix.append(new_row)
 
