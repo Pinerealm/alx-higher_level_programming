@@ -21,17 +21,13 @@ class Base:
     def to_json_string(list_dictionaries):
         """Returns the JSON string representation of a list of dictionaries
         """
-        if list_dictionaries is None or list_dictionaries == []:
-            return "[]"
-        return json.dumps(list_dictionaries)
+        return json.dumps(list_dictionaries or [])
 
     @staticmethod
     def from_json_string(json_string):
         """Returns a list of dictionaries from the JSON string representation.
         """
-        if json_string is None or json_string == "[]":
-            return []
-        return json.loads(json_string)
+        return json.loads(json_string or "[]")
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -90,6 +86,7 @@ class Base:
             o_list = [list(map(int, row)) for row in reader]
             return [cls.create(**dict(zip(attributes, o))) for o in o_list]
 
+    @staticmethod
     def draw(list_rectangles, list_squares):
         """Draws the rectangles and squares using the turtle module.
         """
