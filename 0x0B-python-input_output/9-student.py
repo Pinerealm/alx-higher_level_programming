@@ -15,4 +15,4 @@ class Student:
         """Returns the dictionary representation, for JSON serialization,
         of an object
         """
-        return self.__dict__
+        return vars(self)

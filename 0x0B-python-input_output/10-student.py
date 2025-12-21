@@ -21,8 +21,10 @@ class Student:
             A dictionary representation of a Student instance
         """
         if attrs is None:
-            return self.__dict__
+            return vars(self)
         else:
-            new_dict = {key: value for key, value in self.__dict__.items()
-                        if key in attrs}
-            return new_dict
+            obj_dict = vars(self)
+            return {
+                key: val for key, val in obj_dict.items()
+                if key in attrs
+            }

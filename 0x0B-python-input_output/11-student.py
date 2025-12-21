@@ -20,12 +20,14 @@ class Student:
         Returns:
             A dictionary representation of a Student instance
         """
+        obj_dict = vars(self)
         if attrs is None:
-            return self.__dict__
+            return obj_dict
         else:
-            new_dict = {key: value for key, value in self.__dict__.items()
-                        if key in attrs}
-            return new_dict
+            return {
+                key: val for key, val in obj_dict.items()
+                if key in attrs
+            }
 
     def reload_from_json(self, json):
         """Replaces all attributes of the Student instance
@@ -34,4 +36,4 @@ class Student:
             json (dict): A dictionary of attributes to replace
         """
         for key, value in json.items():
-            self.__dict__[key] = value
+            setattr(self, key, value)
