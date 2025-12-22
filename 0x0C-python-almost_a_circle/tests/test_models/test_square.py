@@ -2,7 +2,6 @@
 import unittest
 from models.square import Square
 from models.base import Base
-from models.rectangle import Rectangle
 
 
 class TestSquare(unittest.TestCase):
@@ -15,8 +14,9 @@ class TestSquare(unittest.TestCase):
     def test_id(self):
         """Test correct id assignment after instantiation."""
         for i in range(1, 20):
-            s = Square(1)
-            self.assertEqual(s.id, i)
+            with self.subTest(i=i):
+                s = Square(1)
+                self.assertEqual(s.id, i)
 
         s = Square(1, 0, 0, 12)
         self.assertEqual(s.id, 12)
@@ -29,9 +29,10 @@ class TestSquare(unittest.TestCase):
     def test_size(self):
         """Test correct width assignment."""
         for i in range(1, 20):
-            s = Square(i)
-            self.assertEqual(s.width, i)
-            self.assertEqual(s.height, i)
+            with self.subTest(i=i):
+                s = Square(i)
+                self.assertEqual(s.width, i)
+                self.assertEqual(s.height, i)
 
         s.size = 10
         self.assertEqual(s.width, 10)
@@ -50,8 +51,9 @@ class TestSquare(unittest.TestCase):
     def test_x(self):
         """Test correct x coordinate assignment."""
         for i in range(0, 20):
-            s = Square(1, i)
-            self.assertEqual(s.x, i)
+            with self.subTest(i=i):
+                s = Square(1, i)
+                self.assertEqual(s.x, i)
 
         s.x = 10
         self.assertEqual(s.x, 10)
@@ -65,8 +67,9 @@ class TestSquare(unittest.TestCase):
     def test_y(self):
         """Test correct y coordinate assignment."""
         for i in range(0, 20):
-            s = Square(1, 1, i)
-            self.assertEqual(s.y, i)
+            with self.subTest(i=i):
+                s = Square(1, 1, i)
+                self.assertEqual(s.y, i)
 
         s.y = 10
         self.assertEqual(s.y, 10)

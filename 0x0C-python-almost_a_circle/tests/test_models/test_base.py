@@ -18,8 +18,9 @@ class TestBase(unittest.TestCase):
     def test_id(self):
         """Tests correct id assignment after instantiation."""
         for i in range(1, 20):
-            b = Base()
-            self.assertEqual(b.id, i)
+            with self.subTest(i=i):
+                b = Base()
+                self.assertEqual(b.id, i)
 
         b = Base(12)
         self.assertEqual(b.id, 12)
@@ -27,11 +28,12 @@ class TestBase(unittest.TestCase):
     def test_nb_objects(self):
         """Tests for correct count of objects."""
         for i in range(1, 20):
-            b = Base()
-            self.assertEqual(Base._Base__nb_objects, i)
+            with self.subTest(i=i):
+                b = Base()
+                self.assertEqual(Base._Base__nb_objects, i)
 
-        b = Base(12)
-        self.assertNotEqual(Base._Base__nb_objects, 20)
+        b = Base(50)
+        self.assertEqual(Base._Base__nb_objects, 19)
 
     def test_to_json_string(self):
         """Tests correct JSON string representation."""

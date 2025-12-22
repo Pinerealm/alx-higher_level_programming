@@ -14,8 +14,9 @@ class TestRectangle(unittest.TestCase):
     def test_id(self):
         """Test correct id assignment after instantiation."""
         for i in range(1, 20):
-            r = Rectangle(1, 1)
-            self.assertEqual(r.id, i)
+            with self.subTest(i=i):
+                r = Rectangle(1, 1)
+                self.assertEqual(r.id, i)
 
         r = Rectangle(1, 1, 0, 0, 12)
         self.assertEqual(r.id, 12)
@@ -33,8 +34,9 @@ class TestRectangle(unittest.TestCase):
     def test_width(self):
         """Test correct width assignment."""
         for i in range(1, 20):
-            r = Rectangle(i, 1)
-            self.assertEqual(r.width, i)
+            with self.subTest(i=i):
+                r = Rectangle(i, 1)
+                self.assertEqual(r.width, i)
 
         r.width = 10
         self.assertEqual(r.width, 10)
@@ -48,8 +50,9 @@ class TestRectangle(unittest.TestCase):
     def test_height(self):
         """Test correct height assignment."""
         for i in range(1, 20):
-            r = Rectangle(1, i)
-            self.assertEqual(r.height, i)
+            with self.subTest(i=i):
+                r = Rectangle(1, i)
+                self.assertEqual(r.height, i)
 
         r.height = 10
         self.assertEqual(r.height, 10)
@@ -63,8 +66,9 @@ class TestRectangle(unittest.TestCase):
     def test_x(self):
         """Test correct x coordinate assignment."""
         for i in range(0, 20):
-            r = Rectangle(1, 1, i)
-            self.assertEqual(r.x, i)
+            with self.subTest(i=i):
+                r = Rectangle(1, 1, i)
+                self.assertEqual(r.x, i)
 
         r.x = 5
         self.assertEqual(r.x, 5)
@@ -78,8 +82,9 @@ class TestRectangle(unittest.TestCase):
     def test_y(self):
         """Test correct y coordinate assignment."""
         for i in range(0, 20):
-            r = Rectangle(1, 1, 0, i)
-            self.assertEqual(r.y, i)
+            with self.subTest(i=i):
+                r = Rectangle(1, 1, 0, i)
+                self.assertEqual(r.y, i)
 
         r.y = 6
         self.assertEqual(r.y, 6)
@@ -93,8 +98,9 @@ class TestRectangle(unittest.TestCase):
     def test_area(self):
         """Test correct area calculation."""
         for i in range(1, 20):
-            r = Rectangle(i, i)
-            self.assertEqual(r.area(), i * i)
+            with self.subTest(i=i):
+                r = Rectangle(i, i)
+                self.assertEqual(r.area(), i * i)
 
     def test_display(self):
         """Test correct display."""
